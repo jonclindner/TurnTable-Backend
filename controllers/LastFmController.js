@@ -9,7 +9,6 @@ const GetTopAlbumsByTag = async (req, res) => {
       `http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=${tag}&api_key=${API_KEY}&format=json`
     )
     const resultArray = response.data.albums.album
-    console.log(response)
     const responseArray = []
 
     resultArray.forEach((album) => {
