@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon app.js",
-    "start": "node app.js"
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
@@ -20,9 +20,15 @@
     "morgan": "^1.10.0",
     "node": "^19.6.1",
     "pg": "^8.9.0",
+    "react-scripts": "^5.0.1",
     "sequelize": "^6.29.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.21"
+    "@types/jquery": "^2.0.42",
+    "concurrently": "^3.4.0",
+    "lite-server": "^2.3.0",
+    "node-sass": "^8.0.0",
+    "nodemon": "^2.0.21",
+    "sass": "^1.58.3"
   }
 }

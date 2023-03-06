@@ -3,7 +3,7 @@ const cors = require('cors')
 const logger = require('morgan')
 const AppRouter = require('./routes/AppRouter')
 
-const AuthRouter = require('./routes/AuthRouter')
+// const AuthRouter = require('./routes/AuthRouter')
 const PostRouter = require('./routes/PostRouter')
 
 const app = express()
@@ -14,7 +14,7 @@ app.use(cors())
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use('/auth', AuthRouter)
+// app.use('/auth', AuthRouter)
 app.use('/posts', PostRouter)
 
 app.get('/', (req, res) => {
