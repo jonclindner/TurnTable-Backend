@@ -16,7 +16,8 @@ const GetTopAlbumsByTag = async (req, res) => {
         albumName: album.name,
         mbid: album.mbid,
         artist: album.artist,
-        image_url: album.image[2]
+        medium_image_url: album.image[2],
+        large_image_url: album.image[3]
       })
     })
     return res.status(200).json(responseArray)
@@ -38,7 +39,8 @@ const SearchAlbumsByName = async (req, res) => {
         albumName: album.name,
         mbid: album.mbid,
         artist: album.artist,
-        image_url: album.image[2]
+        medium_image_url: album.image[2],
+        large_image_url: album.image[3]
       })
     })
     return res.status(200).json(responseArray)
@@ -46,17 +48,19 @@ const SearchAlbumsByName = async (req, res) => {
     throw error
   }
 }
-const getAlbumInfo = async (req, res) => {
+const GetAlbumInfo = async (req, res) => {
   try {
     const { album, artist } = req.params
     const response = await axios.get(
       `http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=${API_KEY}&artist=${artist}&album=${album}&format=json`
     )
     return res.status(200).json(response)
-  } catch (error) {}
+  } catch (error) {
+    throw error
+  }
 }
 module.exports = {
   GetTopAlbumsByTag,
   SearchAlbumsByName,
-  getAlbumInfo
+  GetAlbumInfo
 }
