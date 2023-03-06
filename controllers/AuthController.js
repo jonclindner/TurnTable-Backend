@@ -3,9 +3,10 @@ const middleware = require('../middleware')
 
 const Register = async (req, res) => {
   try {
-    const { name, email, password, genre } = req.body
+    const { name, email, password } = req.body
     let passwordDigest = await middleware.hashPassword(password)
-    const user = await User({ email, passwordDigest, name })
+    const user = await User.create({ email, passwordDigest, name })
+    res.send(user)
   } catch (error) {
     throw error
   }
@@ -68,7 +69,7 @@ const UpdatePassword = async (req, res) => {
 }
 
 module.exports = {
-  // Login,
-  Register
-  // UpdatePassword
+  Login,
+  Register,
+  UpdatePassword
 }

@@ -24,6 +24,15 @@ module.exports = {
       favoriteAlbums: {
         type: Sequelize.INTEGER
       },
+      albumId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        allowNull: true,
+        references: {
+          model: 'albums',
+          key: 'id'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
