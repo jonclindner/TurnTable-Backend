@@ -14,6 +14,7 @@ app.use(cors())
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use('/api', AppRouter)
 // app.use('/auth', AuthRouter)
 // app.use('/posts', ReviewRouter)
 
