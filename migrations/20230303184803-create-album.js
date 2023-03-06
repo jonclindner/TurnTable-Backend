@@ -9,9 +9,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      albumId: {
-        type: Sequelize.INTEGER
-      },
       name: {
         type: Sequelize.STRING
       },

@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'Review',
-      tableName: 'review'
+      tableName: 'reviews'
     }
   )
   return Review

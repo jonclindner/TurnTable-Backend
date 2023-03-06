@@ -1,5 +1,14 @@
 const { User, Album } = require('../models')
 
+const CreateUsers = async (req, res) => {
+  try {
+    const user = await User.create({ ...req.body })
+    res.send(user)
+  } catch (error) {
+    throw error
+  }
+}
+
 const GetUsers = async (req, res) => {
   try {
     const users = await User.findAll()
@@ -20,5 +29,6 @@ const GetUserProfile = async (req, res) => {
 
 module.exports = {
   GetUsers,
-  GetUserProfile
+  GetUserProfile,
+  CreateUsers
 }

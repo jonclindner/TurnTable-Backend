@@ -4,7 +4,7 @@ const logger = require('morgan')
 const AppRouter = require('./routes/AppRouter')
 const ReviewRouter = require('./routes/ReviewRouter')
 const AuthRouter = require('./routes/AuthRouter')
-
+const AlbumRouter = require('./routes/AlbumRouter')
 const app = express()
 
 const PORT = process.env.PORT || 3001
@@ -16,6 +16,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use('/api', AppRouter)
 app.use('/reviews', ReviewRouter)
 app.use('/auth', AuthRouter)
+app.use('/album', AlbumRouter)
 
 app.get('/', (req, res) => {
   res.send('This is the base path!')
