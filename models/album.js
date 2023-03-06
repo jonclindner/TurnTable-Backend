@@ -8,7 +8,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   Album.init(
     {
-      albumId: DataTypes.INTEGER,
       name: DataTypes.STRING,
       artist: DataTypes.STRING,
       image: DataTypes.STRING,
@@ -17,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'Album',
-      tableName: 'album'
+      tableName: 'albums'
     }
   )
   return Album

@@ -2,19 +2,17 @@ const { Album } = require('../models')
 
 const CreateAlbum = async (req, res) => {
   try {
-    const album = await Album.create()
+    const album = await Album.create({ ...req.body })
     res.send(album)
   } catch (error) {
     throw error
-  },
-
-
-
+  }
+}
 
 const GetAlbums = async (req, res) => {
   try {
-    const users = await users.findAll()
-    res.send(Album)
+    const albums = await albums.findAll()
+    res.send(albums)
   } catch (error) {
     throw error
   }
