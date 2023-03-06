@@ -4,7 +4,7 @@ const logger = require('morgan')
 const AppRouter = require('./routes/AppRouter')
 
 // const AuthRouter = require('./routes/AuthRouter')
-const PostRouter = require('./routes/PostRouter')
+const ReviewRouter = require('./routes/ReviewRouter')
 
 const app = express()
 
@@ -14,8 +14,9 @@ app.use(cors())
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use('/api', AppRouter)
 // app.use('/auth', AuthRouter)
-app.use('/posts', PostRouter)
+// app.use('/posts', ReviewRouter)
 
 app.get('/', (req, res) => {
   res.send('This is the base path!')
