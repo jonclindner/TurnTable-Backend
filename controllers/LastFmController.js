@@ -16,7 +16,8 @@ const GetTopAlbumsByTag = async (req, res) => {
         albumName: album.name,
         mbid: album.mbid,
         artist: album.artist,
-        image_url: album.image[2]
+        medium_image_url: album.image[2],
+        large_image_url: album.image[3]
       })
     })
     return res.status(200).json(responseArray)
@@ -38,7 +39,8 @@ const SearchAlbumsByName = async (req, res) => {
         albumName: album.name,
         mbid: album.mbid,
         artist: album.artist,
-        image_url: album.image[2]
+        medium_image_url: album.image[2],
+        large_image_url: album.image[3]
       })
     })
     return res.status(200).json(responseArray)
