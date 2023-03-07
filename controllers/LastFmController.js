@@ -15,7 +15,7 @@ const GetTopAlbumsByTag = async (req, res) => {
       responseArray.push({
         albumName: album.name,
         mbid: album.mbid,
-        artist: album.artist,
+        artist: album.artist.name,
         medium_image_url: album.image[2],
         large_image_url: album.image[3]
       })
