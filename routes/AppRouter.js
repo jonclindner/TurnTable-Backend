@@ -3,7 +3,7 @@ const ReviewRouter = require('./ReviewRouter')
 const AlbumRouter = require('./AlbumRouter')
 const LastFmRouter = require('./LastFmRouter')
 
-Router.use('/feed', ReviewRouter)
+Router.use('/review', ReviewRouter)
 Router.use('/album', AlbumRouter)
 Router.use('/LastFm', LastFmRouter)
 

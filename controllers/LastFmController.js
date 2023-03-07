@@ -50,7 +50,7 @@ const SearchAlbumsByName = async (req, res) => {
 }
 const GetAlbumInfo = async (req, res) => {
   try {
-    const { album, artist } = req.params
+    const { artist, album } = req.params
     const response = await axios.get(
       `http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=${API_KEY}&artist=${artist}&album=${album}&format=json`
     )
