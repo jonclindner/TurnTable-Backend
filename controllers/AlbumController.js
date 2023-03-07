@@ -18,6 +18,15 @@ const GetAlbums = async (req, res) => {
     throw error
   }
 }
+const GetAlbumByNameAndArtist = async (req, res) => {
+  let { artist, name } = req.params
+  try {
+    const albums = await Album.findAll({
+      where: { name: name, artist: artist }
+    })
+    res.status(200).json(albums)
+  } catch (error) {}
+}
 
 const GetAlbumDetails = async (req, res) => {
   try {
@@ -31,5 +40,6 @@ const GetAlbumDetails = async (req, res) => {
 module.exports = {
   GetAlbums,
   GetAlbumDetails,
-  CreateAlbum
+  CreateAlbum,
+  GetAlbumByNameAndArtist
 }
