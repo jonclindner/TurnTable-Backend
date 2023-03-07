@@ -5,7 +5,11 @@ const Register = async (req, res) => {
   try {
     const { name, email, password } = req.body
     let passwordDigest = await middleware.hashPassword(password)
-    const user = await User.create({ email, passwordDigest, name })
+    const user = await User.create({
+      email,
+      password: passwordDigest,
+      userName: name
+    })
     res.send(user)
   } catch (error) {
     throw error
@@ -18,10 +22,11 @@ const Login = async (req, res) => {
       where: { email: email },
       raw: true
     })
-    let matched = await middleware.comparePassword(
-      user.passwordDigest,
-      password
-    )
+    console.log('user', user)
+    console.log('password', password)
+
+    let matched = await middleware.comparePassword(user.password, password)
+    console.log('matched', matched)
     if (matched) {
       let payload = {
         id: user.id,
