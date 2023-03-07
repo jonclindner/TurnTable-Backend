@@ -3,7 +3,12 @@ const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class Album extends Model {
     static associate(models) {
-      Album.hasMany(models.Review)
+      Album.hasMany(models.Review, { foreignKey: 'albumId' })
+      Album.belongsToMany(models.User, {
+        as: 'favoritelist',
+        through: models.FavoriteList,
+        foreignKey: 'albumId'
+      })
     }
   }
   Album.init(

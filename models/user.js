@@ -3,8 +3,12 @@ const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
-      User.hasMany(models.Review, { foreignKey: 'albumId' }),
-        User.hasMany(models.Album, { foreignKey: 'albumId' })
+      User.hasMany(models.Review, { foreignKey: 'userId' })
+      User.belongsToMany(models.Album, {
+        as: 'favoritelist',
+        through: models.FavoriteList,
+        foreignKey: 'userId'
+      })
     }
   }
   User.init(
@@ -12,16 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       userName: DataTypes.STRING,
       email: DataTypes.STRING,
       password: DataTypes.STRING,
-      favoriteAlbums: DataTypes.INTEGER,
-      albumId: {
-        type: DataTypes.INTEGER,
-        onDelete: 'CASCADE',
-        allowNull: true,
-        references: {
-          model: 'albums',
-          key: 'id'
-        }
-      }
+      favoriteAlbums: DataTypes.INTEGER
     },
     {
       sequelize,

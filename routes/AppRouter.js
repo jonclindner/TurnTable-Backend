@@ -4,7 +4,7 @@ const AlbumRouter = require('./AlbumRouter')
 const LastFmRouter = require('./LastFmRouter')
 
 Router.use('/feed', ReviewRouter)
-Router.use('/comments', AlbumRouter)
+Router.use('/album', AlbumRouter)
 Router.use('/LastFm', LastFmRouter)
 
 module.exports = Router
