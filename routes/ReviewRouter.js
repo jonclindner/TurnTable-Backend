@@ -4,7 +4,7 @@ const middleware = require('../middleware')
 
 Router.get('/:review', controller.GetReviews)
 Router.post(
-  '/',
+  '/create-review',
   middleware.stripToken,
   middleware.verifyToken,
   controller.CreateReview
