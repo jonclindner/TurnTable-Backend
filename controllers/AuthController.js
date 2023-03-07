@@ -71,10 +71,19 @@ const CheckSession = async (req, res) => {
   const { payload } = res.locals
   res.send(payload)
 }
+const GetUsers = async (req, res) => {
+  try {
+    const users = await User.findAll()
+    res.send(users)
+  } catch (error) {
+    throw error
+  }
+}
 
 module.exports = {
   Login,
   Register,
   UpdatePassword,
-  CheckSession
+  CheckSession,
+  GetUsers
 }
