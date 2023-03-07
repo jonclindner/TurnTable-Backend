@@ -2,8 +2,9 @@ const { Album } = require('../models')
 
 const CreateAlbum = async (req, res) => {
   try {
-    const album = await Album.create({ ...req.body })
-    res.send(album)
+    console.log({ ...req.body })
+    const response = await Album.create({ ...req.body })
+    res.send(response)
   } catch (error) {
     throw error
   }
