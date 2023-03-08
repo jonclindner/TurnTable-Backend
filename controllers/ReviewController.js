@@ -94,7 +94,7 @@ const DeleteReview = async (req, res) => {
 //   }
 // }
 
-// Don't forget to export your functions
+// Don't forget to export your functionsa
 module.exports = {
   GetReviews,
   GetReviewsByUserId,
