@@ -5,8 +5,9 @@ const middleware = require('../middleware')
 Router.get('/:review', controller.GetReviews)
 Router.get('/get-reviews-by-user-id/:user_id', controller.GetReviewsByUserId)
 Router.get('/get-reviews-by-album-id/:album_id', controller.GetReviewsByAlbumId)
+
 Router.post(
-  '/create-review',
+  '/create-review/:user_id',
   middleware.stripToken,
   middleware.verifyToken,
   controller.CreateReview
