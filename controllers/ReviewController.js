@@ -10,6 +10,28 @@ const GetReviews = async (req, res) => {
     throw error
   }
 }
+const GetReviewsByUserId = async (req, res) => {
+  let { user_id } = req.params
+  try {
+    const review = await Review.findAll({
+      where: { userId: user_id }
+    })
+    res.send(review)
+  } catch (error) {
+    throw error
+  }
+}
+const GetReviewsByAlbumId = async (req, res) => {
+  let { album_id } = req.params
+  try {
+    const review = await Review.findAll({
+      where: { albumId: album_id }
+    })
+    res.send(review)
+  } catch (error) {
+    throw error
+  }
+}
 // GET review by id
 
 const GetReviewDetails = async (req, res) => {
@@ -72,6 +94,8 @@ const DeleteReview = async (req, res) => {
 // Don't forget to export your functions
 module.exports = {
   GetReviews,
+  GetReviewsByUserId,
+  GetReviewsByAlbumId,
   GetReviewDetails,
   CreateReview,
   UpdateReview,

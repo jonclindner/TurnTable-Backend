@@ -8,5 +8,7 @@ Router.get(
   '/get-album-by-name-and-artist/:artist/:name',
   controller.GetAlbumByNameAndArtist
 )
+Router.get('/get-fav-list/:user_id', controller.GetFavList)
+Router.post('/create-favlist/:user_id/:album_id')
 
 module.exports = Router

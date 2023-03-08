@@ -22,11 +22,9 @@ const Login = async (req, res) => {
       where: { email: email },
       raw: true
     })
-    console.log('user', user)
-    console.log('password', password)
 
     let matched = await middleware.comparePassword(user.password, password)
-    console.log('matched', matched)
+
     if (matched) {
       let payload = {
         id: user.id,
