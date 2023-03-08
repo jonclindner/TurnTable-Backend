@@ -46,10 +46,11 @@ const GetReviewDetails = async (req, res) => {
 // CREATE review
 
 const CreateReview = async (req, res) => {
+  console.log('test')
   try {
     let reviewerId = parseInt(req.params.user_id)
     let reviewBody = {
-      reviewId,
+      reviewerId,
       ...req.body
     }
     let review = await Review.create(reviewBody)
