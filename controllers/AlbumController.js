@@ -1,5 +1,6 @@
 const { Album } = require('../models')
 const { User } = require('../models')
+const { FavoriteList } = require('../models')
 
 const CreateAlbum = async (req, res) => {
   try {
@@ -43,12 +44,24 @@ const GetFavList = async (req, res) => {
       ]
     })
     res.status(200).json(list)
-  } catch (error) {}
+  } catch (error) {
+    throw error
+  }
+}
+const CreateFavList = async (req, res) => {
+  let { user_id } = req.params
+  let { album_id } = req.params
+  const response = await FavList.create({
+    userId: user_id,
+    albumId: album_id
+  })
+  res.status(200).send(response)
 }
 
 module.exports = {
   GetAlbums,
   GetFavList,
   CreateAlbum,
-  GetAlbumByNameAndArtist
+  GetAlbumByNameAndArtist,
+  CreateFavList
 }
