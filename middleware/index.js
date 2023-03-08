@@ -15,27 +15,6 @@ const comparePassword = async (storedPassword, password) => {
   return passwordMatch
 }
 
-const createToken = (payload) => {
-  let token = jwt.sign(payload, APP_SECRET)
-  return token
-}
-
-const verifyToken = (req, res, next) => {
-  const { token } = res.locals
-
-  try {
-    let payload = jwt.verify(token, APP_SECRET)
-    if (payload) {
-      res.locals.payload = payload
-      return next()
-    }
-    res.status(401).send({ status: 'Error', msg: 'Unauthorized JWT' })
-  } catch (error) {
-    console.log(error)
-    res.status(401).send({ status: 'Error', msg: 'Verify Token Error!' })
-  }
-}
-
 const stripToken = (req, res, next) => {
   try {
     const token = req.headers['authorization'].split(' ')[1]
@@ -47,6 +26,28 @@ const stripToken = (req, res, next) => {
   } catch (error) {
     console.log(error)
     res.status(401).send({ status: 'Error', msg: 'Strip Token Error!' })
+  }
+}
+
+const createToken = (payload) => {
+  let token = jwt.sign(payload, APP_SECRET)
+  return token
+}
+
+const verifyToken = (req, res, next) => {
+  const { token } = res.locals
+
+  try {
+    let payload = jwt.verify(token, APP_SECRET)
+
+    if (payload) {
+      res.locals.payload = payload
+      return next()
+    }
+    res.status(401).send({ status: 'Error', msg: 'Unauthorized JWT' })
+  } catch (error) {
+    console.log(error)
+    res.status(401).send({ status: 'Error', msg: 'Verify Token Error!' })
   }
 }
 
