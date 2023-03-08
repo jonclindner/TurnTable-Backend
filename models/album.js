@@ -15,8 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       name: DataTypes.STRING,
       artist: DataTypes.STRING,
-      image: DataTypes.STRING,
-      releaseDate: DataTypes.INTEGER
+      image: DataTypes.STRING
     },
     {
       sequelize,
