@@ -21,8 +21,8 @@ const GetAlbums = async (req, res) => {
 
 const GetAlbumDetails = async (req, res) => {
   try {
-    const albums = await User.findByPk(req.params.album_id)
-    res.send(albums)
+    const album = await User.findByPk(req.params.album_id)
+    res.send(album)
   } catch (error) {
     throw error
   }

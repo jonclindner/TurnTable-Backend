@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       albumId: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
         references: {
           model: 'albums',
