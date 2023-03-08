@@ -33,6 +33,7 @@ const GetAlbumByNameAndArtist = async (req, res) => {
 const GetFavList = async (req, res) => {
   let { user_id } = req.params
   try {
+
     const list = await User.findAll({
       where: { userId: user_id },
       include: [
@@ -44,6 +45,7 @@ const GetFavList = async (req, res) => {
       ]
     })
     res.status(200).json(list)
+
   } catch (error) {
     throw error
   }
