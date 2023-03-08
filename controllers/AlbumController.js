@@ -1,4 +1,6 @@
 const { Album } = require('../models')
+const { User } = require('../models')
+const { FavoriteList } = require('../models')
 
 const CreateAlbum = async (req, res) => {
   try {
@@ -18,18 +20,50 @@ const GetAlbums = async (req, res) => {
     throw error
   }
 }
-
-const GetAlbumDetails = async (req, res) => {
+const GetAlbumByNameAndArtist = async (req, res) => {
+  let { artist, name } = req.params
   try {
-    const album = await User.findByPk(req.params.album_id)
-    res.send(album)
+    const albums = await Album.findAll({
+      where: { name: name, artist: artist }
+    })
+    res.status(200).json(albums)
+  } catch (error) {}
+}
+
+const GetFavList = async (req, res) => {
+  let { user_id } = req.params
+  try {
+
+    const list = await User.findAll({
+      where: { userId: user_id },
+      include: [
+        {
+          model: Album,
+          as: 'favoritelist',
+          through: { attributes: [] }
+        }
+      ]
+    })
+    res.status(200).json(list)
+
   } catch (error) {
     throw error
   }
 }
+const CreateFavList = async (req, res) => {
+  let { user_id } = req.params
+  let { album_id } = req.params
+  const response = await FavList.create({
+    userId: user_id,
+    albumId: album_id
+  })
+  res.status(200).send(response)
+}
 
 module.exports = {
   GetAlbums,
-  GetAlbumDetails,
-  CreateAlbum
+  GetFavList,
+  CreateAlbum,
+  GetAlbumByNameAndArtist,
+  CreateFavList
 }
