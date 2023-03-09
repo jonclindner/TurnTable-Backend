@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'FavoriteList',
-      tableName: 'favoritelist'
+      tableName: 'FavoriteLists'
     }
   )
   return FavoriteList
