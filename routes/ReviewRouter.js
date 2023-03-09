@@ -14,13 +14,13 @@ Router.post(
 )
 
 Router.put(
-  '/:review_id',
+  '/update-review/:review_id',
   middleware.stripToken,
   middleware.verifyToken,
   controller.UpdateReview
 )
 Router.delete(
-  '/:review_id',
+  '/delete/:review_id',
   middleware.stripToken,
   middleware.verifyToken,
   controller.DeleteReview

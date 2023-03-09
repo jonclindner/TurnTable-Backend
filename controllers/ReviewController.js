@@ -65,12 +65,16 @@ const CreateReview = async (req, res) => {
 // UPDATE review
 
 const UpdateReview = async (req, res) => {
+  console.log('test')
   try {
     let reviewId = parseInt(req.params.review_id)
-    let updatedReview = await Review.update(req.body, {
-      where: { id: reviewId },
-      returning: true
-    })
+    const updatedReview = await Review.update(
+      { ...req.body },
+      {
+        where: { id: reviewId },
+        returning: true
+      }
+    )
     res.send(updatedReview)
   } catch (error) {
     throw error
@@ -87,12 +91,6 @@ const DeleteReview = async (req, res) => {
     throw error
   }
 }
-// const GetReviewsByAlbumId = async (req, res) => {
-//   try {
-//     let albumId = parseInt(req.params.album_id)
-//     await Review.findAll({ where: { id: albumId } })
-//   }
-// }
 
 // Don't forget to export your functionsa
 module.exports = {
