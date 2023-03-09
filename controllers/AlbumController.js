@@ -14,7 +14,7 @@ const CreateAlbum = async (req, res) => {
 
 const GetAlbums = async (req, res) => {
   try {
-    const albums = await albums.findAll()
+    const albums = await Album.findAll()
     res.send(albums)
   } catch (error) {
     throw error
@@ -33,9 +33,8 @@ const GetAlbumByNameAndArtist = async (req, res) => {
 const GetFavList = async (req, res) => {
   let { user_id } = req.params
   try {
-
     const list = await User.findAll({
-      where: { userId: user_id },
+      where: { id: user_id },
       include: [
         {
           model: Album,
@@ -45,7 +44,6 @@ const GetFavList = async (req, res) => {
       ]
     })
     res.status(200).json(list)
-
   } catch (error) {
     throw error
   }
@@ -53,7 +51,7 @@ const GetFavList = async (req, res) => {
 const CreateFavList = async (req, res) => {
   let { user_id } = req.params
   let { album_id } = req.params
-  const response = await FavList.create({
+  const response = await FavoriteList.create({
     userId: user_id,
     albumId: album_id
   })
