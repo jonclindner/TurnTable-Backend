@@ -22,6 +22,9 @@ const GetAlbums = async (req, res) => {
 }
 const GetAlbumByNameAndArtist = async (req, res) => {
   let { artist, name } = req.params
+  artist = encodeURIComponent(artist)
+  name = encodeURIComponent(name)
+  console.log(artist, name)
   try {
     const albums = await Album.findAll({
       where: { name: name, artist: artist }
